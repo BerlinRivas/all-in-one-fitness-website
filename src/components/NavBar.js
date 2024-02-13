@@ -1,69 +1,26 @@
-import React, { useState } from 'react';
-import './NavBar.css';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { Stack } from '@mui/material';
 
-export default function NavBar() {
-    const [sidebarVisible, setSidebarVisible] = useState(false);
+const Navbar = () => (
+  <Stack direction="row" justifyContent="space-around" sx={{ gap: { sm: '123px', xs: '40px' }, mt: { sm: '32px', xs: '20px' }, justifyContent: 'none' }} px="20px">
+    <Link to="/">
+      <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHHFT949fUipzkiFOBH3fAiZZUCdYojwUyX2aTonS1aIwMrx6NUIsHfUHSLzjGJFxxjiQtxn.6QmVPwxtrrJQShD4m2kpZI7l4sVSN0ZOZF_ImpwLfl_ugprnI8XkyZCjDnu7iDV6o4kzdRfWC712fRc-&format=source" alt="logo" style={{ width: '48px', height: '48px', margin: '0px 20px' }} />
+    </Link>
+    <Stack
+      direction="row"
+      gap="40px"
+      fontFamily="Alegreya"
+      fontSize="24px"
+      alignItems="flex-end"
+    >
+      <Link to="/" style={{ textDecoration: 'none', color: '#3A1212', borderBottom: '3px solid #FF2625' }}>Home</Link>
+      <Link to="/exercises" style={{ textDecoration: 'none', color: '#3A1212' }}>Exercises</Link>
+      <Link to="/diet-plan" style={{ textDecoration: 'none', color: '#3A1212' }}>Diet Plan</Link>
+      <Link to="/about" style={{ textDecoration: 'none', color: '#3A1212' }}>About</Link>
+      <Link to="/contact" style={{ textDecoration: 'none', color: '#3A1212' }}>Contact</Link>
+    </Stack>
+  </Stack>
+);
 
-    function toggleSidebar() {
-        setSidebarVisible(!sidebarVisible);
-    }
-
-    function closeSidebar() {
-        setSidebarVisible(false);
-    }
-
-    return (
-        <nav>
-            <ul className="sidebar" style={{ display: sidebarVisible ? 'flex' : 'none' }}>
-                <li onClick={closeSidebar}>
-                    <Link to="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26">
-                            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-                        </svg>
-                    </Link>
-                </li>
-                <li>
-                    <Link to="/diet-plan">Diet Plan</Link>
-                </li>
-                <li>
-                    <Link to="/home-workouts">Home Workouts</Link>
-                </li>
-                <li>
-                    <Link to="/gym-workouts">Gym Workouts</Link>
-                </li>
-                <li>
-                    <Link to="/products">Products</Link>
-                </li>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <Link to="/">VitalityPeak</Link>
-                </li>
-                <li>
-                    <Link to="/diet-plan">Diet Plan</Link>
-                </li>
-                <li>
-                    <Link to="/home-workouts">Home Workouts</Link>
-                </li>
-                <li>
-                    <Link to="/gym-workouts">Gym Workouts</Link>
-                </li>
-                <li>
-                    <Link to="/products">Products</Link>
-                </li>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
-                <li onClick={toggleSidebar} style={{ marginTop: '25px', marginRight: '10px'}}>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 -960 960 960" width="26">
-                        <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
-                    </svg>
-                </li>
-            </ul>
-        </nav>
-    );
-}
+export default Navbar;
